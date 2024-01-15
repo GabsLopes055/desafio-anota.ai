@@ -26,4 +26,11 @@ public class Product {
 
     private Category category;
 
+    public Product(ProductDTO request) {
+        this.title = request.title();
+        this.description = request.description();
+        this.ownerId = request.ownerId();
+        this.price = request.price();
+    }
+
 }

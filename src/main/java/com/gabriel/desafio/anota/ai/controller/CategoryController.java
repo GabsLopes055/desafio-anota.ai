@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/category")
+@RequestMapping("/api/category")
 public class CategoryController {
 
     private final CategoryService service;
@@ -33,13 +33,13 @@ public class CategoryController {
 
     /*Metodo para editar uma categoria*/
     @PutMapping("/{idEdit}")
-    public ResponseEntity<Category> editCategory(@PathParam(value = "idEdit") String id, @RequestBody CategoryDTO request) {
+    public ResponseEntity<Category> editCategory(@PathVariable(value = "idEdit") String id, @RequestBody CategoryDTO request) {
         return ResponseEntity.ok().body(this.service.updateCategory(id,request));
     }
 
     /*Metodo para excluir uma categoria*/
     @DeleteMapping("/{idDelete}")
-    public ResponseEntity deleteCategory(@PathParam(value = "idDelete") String id) {
+    public ResponseEntity deleteCategory(@PathVariable(value = "idDelete") String id) {
         this.service.deleteCategory(id);
         return ResponseEntity.noContent().build();
     }

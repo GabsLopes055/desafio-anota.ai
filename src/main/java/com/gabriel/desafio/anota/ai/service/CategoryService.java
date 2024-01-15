@@ -7,6 +7,7 @@ import com.gabriel.desafio.anota.ai.service.exceptions.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryService {
@@ -26,6 +27,11 @@ public class CategoryService {
     /*Listando todas categorias*/
     public List<Category> listAllCategories() {
         return this.repository.findAll();
+    }
+
+    /*Buscando cateogria por id*/
+    public Optional<Category> findCategoriesById(String id) {
+        return this.repository.findById(id);
     }
 
     /*editando categoria*/
